@@ -37,6 +37,12 @@
       wifi-qr
       subsurface
       kdePackages.dolphin
+      kdePackages.okular
+
+      typst
+      onlyoffice-desktopeditors
+      slack
+      deskflow
     ];
   };
 }

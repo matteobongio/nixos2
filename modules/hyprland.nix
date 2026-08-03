@@ -39,8 +39,20 @@
       brightnessctl
       networkmanagerapplet
       wofi
+
+      #theming
+      kdePackages.breeze
+      kdePackages.breeze-gtk
+      qt6Packages.qt6ct
+      libsForQt5.qt5ct
+      libsForQt5.qt5.qtwayland
+      kdePackages.qtwayland
+      themechanger
     ];
+
     services.udisks2.enable = true; #dolphin
+    programs.dconf.enable = true;
+    environment.pathsToLink = [ "/share/color-schemes" ];
 
     security.polkit.enable = true;
     systemd.user.targets.graphical-session.wants = [ "hyprpolkitagent.service" ];

@@ -5,20 +5,10 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
+    nix-alien.url = "github:thiagokokada/nix-alien";
   };
 
   outputs = inputs: 
    inputs.flake-parts.lib.mkFlake { inherit inputs; }
       (inputs.import-tree ./modules);
-  #{
-  #  nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
-  #    modules = [
-  #      disko.nixosModules.disko
-  #      ./disko.nix
-  #      ./configuration.nix
-  #      ./hardware-configuration.nix
-  #      { nixpkgs.config.allowUnfree = true; }
-  #    ];
-  #  };
-  #};
 }

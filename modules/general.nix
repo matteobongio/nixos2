@@ -24,5 +24,8 @@
       nerd-fonts.fira-code
       font-awesome
     ];
+    services.syncthing = {
+      enable = true;
+    };
   };
 }

@@ -1,5 +1,6 @@
 {inputs, self, ...}: {
-  flake.nixosConfigurations.laptop = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.laptop = inputs.nixpkgs.lib.nixosSystem rec {
+    system = "x86_64-linux";
     modules = [
       self.nixosModules.general
       self.nixosModules.hyprland
