@@ -12,6 +12,7 @@
       starship
       gh
       lazygit
+      chezmoi
     ];
   };
 }
