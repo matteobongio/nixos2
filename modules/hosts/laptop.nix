@@ -11,6 +11,8 @@
       self.nixosModules.laptopConfig
       self.nixosModules.laptopHardware
       inputs.disko.nixosModules.disko
+      inputs.nix-index-database.nixosModules.default
+      { programs.nix-index-database.comma.enable = true; }
       self.nixosModules.laptopDisko
     ];
 
