@@ -36,6 +36,7 @@
       # zip
       wifi-qr
       subsurface
+      kdePackages.dolphin
     ];
   };
 }
