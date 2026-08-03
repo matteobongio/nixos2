@@ -3,6 +3,7 @@
     modules = [
       self.nixosModules.general
       self.nixosModules.matteob
+      self.nixosModules.stdPkgs
       self.nixosModules.neovim
       self.nixosModules.laptopConfig
       self.nixosModules.laptopHardware
