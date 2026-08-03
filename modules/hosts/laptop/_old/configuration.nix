@@ -5,7 +5,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -17,9 +16,6 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "laptop"; # Define your hostname.
-
-  # Configure network connections interactively with nmcli or nmtui.
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
@@ -58,15 +54,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.matteob = {
-    isNormalUser = true;
-    description = "Matteo Bongiovanni";
-    extraGroups = [ "wheel" "networkmanager"]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-    ];
-  };
-
   # programs.firefox.enable = true;
 
   # List packages installed in system profile.
@@ -79,14 +66,6 @@
     lazygit
   ];
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-  };
-
-  programs.firefox.enable = true;
-  programs.fish.enable = true;
   programs.hyprland.enable = true;
   programs.nh = {
     flake = "/home/matteob/nixos";

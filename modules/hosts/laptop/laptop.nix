@@ -1,11 +1,13 @@
 {inputs, self, ...}: {
   flake.nixosConfigurations.laptop = inputs.nixpkgs.lib.nixosSystem {
     modules = [
-      self.nixosModules.unfree
-      inputs.disko.nixosModules.disko
+      self.nixosModules.general
+      self.nixosModules.matteob
+      self.nixosModules.neovim
       self.nixosModules.laptopConfig
-      self.nixosModules.laptopDisko
       self.nixosModules.laptopHardware
+      inputs.disko.nixosModules.disko
+      self.nixosModules.laptopDisko
     ];
 
   };
