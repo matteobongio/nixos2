@@ -9,8 +9,8 @@
     ];
 
   };
-  flake.nixosModules.laptopConfig = import ../../../configuration.nix;
-  flake.nixosModules.laptopDisko = import ../../../disko.nix;
-  flake.nixosModules.laptopHardware = import ../../../hardware-configuration.nix;
+  flake.nixosModules.laptopConfig = import ./_old/configuration.nix;
+  flake.nixosModules.laptopDisko = import ./_old/disko.nix;
+  flake.nixosModules.laptopHardware = import ./_old/hardware-configuration.nix;
 }
 
