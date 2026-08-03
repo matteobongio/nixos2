@@ -26,6 +26,9 @@
     ];
     services.syncthing = {
       enable = true;
+      user = "matteob";
+      dataDir = "/home/matteob/Documents"; # Default folder for new synced folders
+        configDir = "/home/matteob/.config/syncthing"; # Folder for Syncthing's settings and keys
     };
   };
 }
