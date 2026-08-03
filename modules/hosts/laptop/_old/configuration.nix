@@ -54,19 +54,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
-  # programs.firefox.enable = true;
-
-  # List packages installed in system profile.
-  # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs; [
-    wget
-    kitty
-    yazi
-    git
-    lazygit
-  ];
-
-  programs.hyprland.enable = true;
   programs.nh = {
     flake = "/home/matteob/nixos";
     enable = true;

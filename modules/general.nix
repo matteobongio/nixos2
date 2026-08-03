@@ -3,7 +3,6 @@
     nixpkgs.config.allowUnfree = true;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
     programs.firefox.enable = true;
-    programs.fish.enable = true;
 
 
 
