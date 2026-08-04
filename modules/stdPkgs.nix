@@ -39,18 +39,37 @@
       # zip
       wifi-qr
       subsurface
-      kdePackages.dolphin
       kdePackages.okular
       kdePackages.ark
       kdePackages.gwenview
       kdePackages.partitionmanager
-
-
 
       typst
       onlyoffice-desktopeditors
       slack
       deskflow
     ];
+  };
+
+  flake.nixosModules.dolphin = {pkgs, ...} : {
+    environment.systemPackages = with pkgs; [
+      kdePackages.dolphin
+
+      kdePackages.kio
+      kdePackages.kio-fuse
+      kdePackages.kio-admin
+      kdePackages.kio-gdrive
+      kdePackages.kio-extras
+      kdePackages.kservice
+      kdePackages.kdegraphics-thumbnailers
+      kdePackages.kdf
+      kdePackages.qtwayland
+      kdePackages.plasma-integration
+      kdePackages.qtsvg
+      shared-mime-info
+      kdePackages.qqc2-desktop-style
+    ];
+
+    environment.etc."/xdg/menus/applications.menu".text = builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
   };
 }

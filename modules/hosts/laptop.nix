@@ -7,6 +7,7 @@
       self.nixosModules.nvidia
       self.nixosModules.matteob
       self.nixosModules.stdPkgs
+      self.nixosModules.dolphin
       self.nixosModules.neovim
       self.nixosModules.games
       self.nixosModules.terminal
