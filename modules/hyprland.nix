@@ -38,7 +38,7 @@
       pwvucontrol
       brightnessctl
       networkmanagerapplet
-      wofi
+      self.packages."x86_64-linux".myWofi
       pwvucontrol
       brightnessctl
       kdePackages.gwenview
@@ -58,6 +58,11 @@
       kdePackages.qtwayland
       themechanger
       nwg-look
+
+      #keychain
+      gnome-keyring
+      libsecret
+      seahorse
     ];
 
 
@@ -105,10 +110,23 @@
      })
     ];
 
-
-
-    #TODO: key ring
-    # security.pam.services.hyprland.enableGnomeKeyring = true;
-    # services.gnome.gnome-keyring.enable = true;
+    services.gnome.gnome-keyring.enable = true;
+    security.pam.services.greetd.enableGnomeKeyring = true;
   };
+
+  flake.packages.x86_64-linux.myWofi =
+    let
+      pkgs = import inputs.nixpkgs {
+        system = "x86_64-linux";
+      };
+    in
+    inputs.wrappers.lib.wrapPackage {
+      inherit pkgs;
+      package = pkgs.wofi;
+      flags = {
+        "--conf" = ../config/wofi/config;
+        "--style" = ../config/wofi/style.css;
+      };
+    };
+
 }

@@ -8,6 +8,7 @@
     nix-alien.url = "github:thiagokokada/nix-alien";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    wrappers.url = "github:lassulus/wrappers";
   };
 
   outputs = inputs: 
