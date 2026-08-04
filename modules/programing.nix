@@ -21,6 +21,7 @@
       rclone
       rsync
       rhash
+      television
 
       gdb
       gdbgui
