@@ -1,6 +1,5 @@
 {inputs, self, ...}: {
   flake.nixosModules.hyprland = {pkgs, ...}:
-
     let
       # Helper function to generate standardized graphical user services
       mkGraphicalService = { name, desc, exec, restart ? "on-failure" }: {
@@ -23,6 +22,7 @@
       xwayland.enable = true;
       withUWSM = true;
     };
+    programs.regreet.enable = true;
     programs.uwsm.enable = true;
     environment.systemPackages = with pkgs; [
       hyprpolkitagent
@@ -39,6 +39,15 @@
       brightnessctl
       networkmanagerapplet
       wofi
+      pwvucontrol
+      brightnessctl
+      kdePackages.gwenview
+
+      # gnome-system-monitor
+      # kdePackages.kimageformats
+      # hypridle
+      # hyprshot
+      # eww
 
       #theming
       kdePackages.breeze
@@ -48,8 +57,13 @@
       libsForQt5.qt5.qtwayland
       kdePackages.qtwayland
       themechanger
+      nwg-look
     ];
 
+
+    programs.hyprlock.enable = false; #todo
+
+    services.gvfs.enable = true; #enable mtp
     services.udisks2.enable = true; #dolphin
     programs.dconf.enable = true;
     environment.pathsToLink = [ "/share/color-schemes" ];
@@ -71,14 +85,30 @@
      })
     (mkGraphicalService {
      name = "nm-applet";
-     desc = "";
+     desc = "Network manager applet";
      exec = "${pkgs.networkmanagerapplet}/bin/nm-applet";
      })
     (mkGraphicalService {
      name = "awww";
-     desc = "";
+     desc = "Wallpaper daemon";
      exec = "${pkgs.awww}/bin/awww-daemon";
      })
+    (mkGraphicalService {
+     name = "pcloud";
+     desc = "";
+     exec = "${pkgs.pcloud}/bin/pcloud";
+     })
+    (mkGraphicalService {
+     name = "protonmail-bridge";
+     desc = "";
+     exec = "${pkgs.protonmail-bridge-gui}/bin/proton-mail-bridge-gui --no-window";
+     })
     ];
+
+
+
+    #TODO: key ring
+    # security.pam.services.hyprland.enableGnomeKeyring = true;
+    # services.gnome.gnome-keyring.enable = true;
   };
 }

@@ -4,11 +4,11 @@
       thunderbird
       joplin-desktop
       appflowy
-      # protonmail-bridge-gui
-      # proton-vpn
-      # calibre
-      # discord
-      # texliveFull
+      protonmail-bridge-gui
+      proton-vpn
+      calibre
+      discord
+      texliveBasic
       yacreader
       qbittorrent
       mpv
@@ -16,10 +16,13 @@
       filezilla
       rustdesk-flutter
       popsicle
-      # pcloud
+
+      pcloud
       pomodoro-gtk
+      #distrobox
       signal-desktop
       planify
+      #libheif
       qdirstat
       krita
       gimp
@@ -38,6 +41,11 @@
       subsurface
       kdePackages.dolphin
       kdePackages.okular
+      kdePackages.ark
+      kdePackages.gwenview
+      kdePackages.partitionmanager
+
+
 
       typst
       onlyoffice-desktopeditors
