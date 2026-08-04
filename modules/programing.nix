@@ -37,6 +37,15 @@
       go
       c3c
     ];
+
+    environment.localBinInPath = true;
+    programs.nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        stdenv.cc.cc.lib
+        zlib
+      ];
+    };
   };
   flake.nixosModules.docker = {pkgs, ...} : {
     virtualisation.containers.enable = true;
