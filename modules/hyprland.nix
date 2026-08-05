@@ -24,6 +24,14 @@
     };
     programs.regreet.enable = true;
     programs.uwsm.enable = true;
+
+    environment.etc."xdg/uwsm/env".text = ''
+      export XCURSOR_SIZE=24
+      export HYPRCURSOR_SIZE=24
+      export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+      export QT_QPA_PLATFORMTHEME=qt6ct
+      '';
+
     environment.systemPackages = with pkgs; [
       hyprpolkitagent
       libsForQt5.qt5.qtwayland
@@ -128,5 +136,6 @@
         "--style" = ../config/wofi/style.css;
       };
     };
+
 
 }
