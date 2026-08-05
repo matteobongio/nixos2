@@ -106,7 +106,7 @@
     (mkGraphicalService {
      name = "protonmail-bridge";
      desc = "";
-     exec = "${pkgs.protonmail-bridge-gui}/bin/proton-mail-bridge-gui --no-window";
+     exec = "${pkgs.protonmail-bridge-gui}/bin/protonmail-bridge-gui --no-window";
      })
     ];
 
