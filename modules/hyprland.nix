@@ -2,7 +2,7 @@
   flake.nixosModules.hyprland = {pkgs, ...}:
     let
       # Helper function to generate standardized graphical user services
-      mkGraphicalService = { name, desc, exec, restart ? "on-failure" }: {
+      mkGraphicalService = { name, desc, exec, restart ? "on-failure", execPost ? "" }: {
         name = name;
         value = {
           description = desc;
@@ -11,6 +11,7 @@
           wantedBy = [ "graphical-session.target" ];
           serviceConfig = {
             ExecStart = exec;
+            ExecStartPost = execPost;
             Restart = restart;
           };
         };
@@ -105,6 +106,7 @@
      name = "awww";
      desc = "Wallpaper daemon";
      exec = "${pkgs.awww}/bin/awww-daemon";
+     execPost = "${pkgs.awww}/bin/awww restore";
      })
     (mkGraphicalService {
      name = "pcloud";
