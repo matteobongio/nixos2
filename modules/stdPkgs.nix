@@ -1,4 +1,4 @@
-{...}: {
+{inputs, self, ...}: {
   flake.nixosModules.stdPkgs = {pkgs, ...} : {
     environment.systemPackages = with pkgs; [
       thunderbird
@@ -31,7 +31,7 @@
       #wonderdraft
       nicotine-plus
       strawberry
-      handbrake
+      self.packages."x86_64-linux".fixedHandbrake
       tor-browser
       # media-downloader
       # octaveFull
@@ -50,6 +50,20 @@
       deskflow
     ];
   };
+
+
+
+  flake.packages."x86_64-linux".fixedHandbrake =
+    let
+      pkgs = import inputs.nixpkgs {
+        system = "x86_64-linux";
+      };
+    in
+      (pkgs.handbrake.overrideAttrs(old: {
+        nativeBuildInputs = (old.nativeBuildInputs or []) ++ [
+          pkgs.autoAddDriverRunpath
+        ];
+      }));
 
   flake.nixosModules.dolphin = {pkgs, ...} : {
     environment.systemPackages = with pkgs; [
