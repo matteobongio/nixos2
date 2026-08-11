@@ -40,6 +40,7 @@
       waybar
       awww
       waypaper
+      mpvpaper
       papirus-icon-theme
       notify-desktop
       swaynotificationcenter
@@ -103,10 +104,9 @@
      exec = "${pkgs.networkmanagerapplet}/bin/nm-applet";
      })
     (mkGraphicalService {
-     name = "awww";
-     desc = "Wallpaper daemon";
-     exec = "${pkgs.awww}/bin/awww-daemon";
-     execPost = "${pkgs.awww}/bin/awww restore";
+     name = "wallpaper";
+     desc = "Wallpaper";
+     exec = "${pkgs.waypaper}/bin/waypaper --restore";
      })
     (mkGraphicalService {
      name = "pcloud";
