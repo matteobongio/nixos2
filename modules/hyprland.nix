@@ -2,13 +2,14 @@
   flake.nixosModules.hyprland = {pkgs, ...}:
     let
       # Helper function to generate standardized graphical user services
-      mkGraphicalService = { name, desc, exec, restart ? "on-failure", execPost ? "" }: {
+      mkGraphicalService = { name, desc ? "", exec, restart ? "on-failure", execPost ? "", path ? [] }: {
         name = name;
         value = {
           description = desc;
           partOf = [ "graphical-session.target" ];
           after = [ "graphical-session.target" ];
           wantedBy = [ "graphical-session.target" ];
+          path = path;
           serviceConfig = {
             ExecStart = exec;
             ExecStartPost = execPost;
@@ -93,31 +94,31 @@
        desc = "Sway Notification Center";
        exec = "${pkgs.swaynotificationcenter}/bin/swaync";
        })
-    (mkGraphicalService {
-     name = "waybar";
-     desc = "Waybar Status Bar";
-     exec = "${pkgs.waybar}/bin/waybar";
-     })
-    (mkGraphicalService {
-     name = "nm-applet";
-     desc = "Network manager applet";
-     exec = "${pkgs.networkmanagerapplet}/bin/nm-applet";
-     })
-    (mkGraphicalService {
-     name = "wallpaper";
-     desc = "Wallpaper";
-     exec = "${pkgs.waypaper}/bin/waypaper --restore";
-     })
-    (mkGraphicalService {
-     name = "pcloud";
-     desc = "";
-     exec = "${pkgs.pcloud}/bin/pcloud";
-     })
-    (mkGraphicalService {
-     name = "protonmail-bridge";
-     desc = "";
-     exec = "${pkgs.protonmail-bridge-gui}/bin/protonmail-bridge-gui --no-window";
-     })
+      (mkGraphicalService {
+       name = "waybar";
+       desc = "Waybar Status Bar";
+       path = [ pkgs.pwvucontrol ];
+       exec = "${pkgs.waybar}/bin/waybar";
+       })
+      (mkGraphicalService {
+       name = "nm-applet";
+       desc = "Network manager applet";
+       exec = "${pkgs.networkmanagerapplet}/bin/nm-applet";
+       })
+      # (mkGraphicalService {
+      #  name = "wallpaper";
+      #  desc = "Wallpaper";
+      #  path = [ pkgs.procps pkgs.mpvpaper ];
+      #  exec = "${pkgs.waypaper}/bin/waypaper --restore";
+      #  })
+      (mkGraphicalService {
+       name = "pcloud";
+       exec = "${pkgs.pcloud}/bin/pcloud";
+       })
+      (mkGraphicalService {
+       name = "protonmail-bridge";
+       exec = "${pkgs.protonmail-bridge-gui}/bin/protonmail-bridge-gui --no-window";
+       })
     ];
 
     services.gnome.gnome-keyring.enable = true;

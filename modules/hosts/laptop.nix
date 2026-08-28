@@ -28,7 +28,7 @@
   boot.initrd.systemd.enable = true;
   powerManagement.enable = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_1; #nvidia bruh
 
   networking.hostName = "laptop"; # Define your hostname.
 
