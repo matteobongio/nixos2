@@ -39,7 +39,6 @@
       libsForQt5.qt5.qtwayland
       kdePackages.qtwayland
       waybar
-      awww
       waypaper
       mpvpaper
       papirus-icon-theme
