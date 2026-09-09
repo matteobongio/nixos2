@@ -14,6 +14,7 @@
       self.nixosModules.docker
       self.nixosModules.laptopConfig
       self.nixosModules.laptopHardware
+      self.nixosModules.tudelft
       inputs.disko.nixosModules.disko
       inputs.nix-index-database.nixosModules.default
       { programs.nix-index-database.comma.enable = true; }

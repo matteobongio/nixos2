@@ -1,4 +1,11 @@
 {...}: {
+
+  flake.nixosModules.tudelft = {pkgs, ...} : {
+    environment.systemPackages = with pkgs ; [
+      mattermost-desktop
+    ];
+  };
+
   flake.nixosModules.terminal = {pkgs, ...} : {
     programs.fish.enable = true;
     environment.systemPackages = with pkgs; [
