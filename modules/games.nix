@@ -21,6 +21,9 @@
     programs.gamescope.enable = true;
     programs.gamemode.enable = true;
 
+    environment.sessionVariables = {
+      "MANGOHUD" = "1";
+    };
 
 
     #NOTE: EA game launcher fix:
