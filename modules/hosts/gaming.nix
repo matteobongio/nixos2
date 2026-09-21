@@ -25,7 +25,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_1; #nvidia bruh
+  # boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_1; #nvidia bruh
 
   networking.hostName = "nixos-gaming"; # Define your hostname.
 
