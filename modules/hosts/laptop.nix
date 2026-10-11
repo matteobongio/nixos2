@@ -57,6 +57,9 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
+  #bluetooth
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   hardware.nvidia = {
     powerManagement.enable = true;
