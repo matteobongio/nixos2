@@ -113,7 +113,6 @@
     jellyfin-web
     jellyfin-ffmpeg
     # jellyfin-desktop
-    fladder
     # winboat
     # bitwarden-desktop
   ];

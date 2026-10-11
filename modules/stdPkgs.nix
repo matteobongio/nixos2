@@ -33,6 +33,7 @@
       strawberry
       self.packages."x86_64-linux".fixedHandbrake
       tor-browser
+      fladder
       # media-downloader
       # octaveFull
       # muse
