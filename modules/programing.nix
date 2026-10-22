@@ -99,6 +99,7 @@
       lua-language-server
       haskell-language-server
       tinymist
+      gopls
     ];
   };
 }
