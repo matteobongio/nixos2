@@ -49,6 +49,7 @@
       onlyoffice-desktopeditors
       slack
       deskflow
+      eduvpn-client
     ];
   };
 
