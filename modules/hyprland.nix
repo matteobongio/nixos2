@@ -1,5 +1,5 @@
 {inputs, self, ...}: {
-  flake.nixosModules.hyprland = {pkgs, ...}:
+  flake.nixosModules.hyprland = {pkgs, pkgs-unstable, ...}:
     let
       # Helper function to generate standardized graphical user services
       mkGraphicalService = { name, desc ? "", exec, restart ? "on-failure", execPost ? "", path ? [] }: {
@@ -39,7 +39,7 @@
       libsForQt5.qt5.qtwayland
       kdePackages.qtwayland
       waybar
-      waypaper
+      pkgs-unstable.waypaper
       mpvpaper
       papirus-icon-theme
       notify-desktop

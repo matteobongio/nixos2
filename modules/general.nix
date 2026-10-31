@@ -50,9 +50,9 @@
     programs.appimage.enable = true;
     programs.appimage.binfmt = true;
 
-    security.pki.caCertificateBlacklist = [ #eMudhra
-      "Comodo AAA Services root"
-      "emSign ECC Root CA - G3"
-    ];
+    # security.pki.caCertificateBlacklist = [ #eMudhra
+    #   "Comodo AAA Services root"
+    #   "emSign ECC Root CA - G3"
+    # ];
   };
 }

@@ -1,6 +1,13 @@
 {inputs, self, lib, ...}: {
   flake.nixosConfigurations.nixos-gaming = inputs.nixpkgs.lib.nixosSystem rec {
     system = "x86_64-linux";
+    specialArgs = {
+      inherit inputs;
+      pkgs-unstable = import inputs.nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    };
     modules = [
       self.nixosModules.general
       self.nixosModules.hyprland
