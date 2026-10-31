@@ -110,10 +110,10 @@
       #  path = [ pkgs.procps pkgs.mpvpaper ];
       #  exec = "${pkgs.waypaper}/bin/waypaper --restore";
       #  })
-      (mkGraphicalService {
-       name = "pcloud";
-       exec = "${pkgs.pcloud}/bin/pcloud";
-       })
+      # (mkGraphicalService {
+      #  name = "pcloud";
+      #  exec = "${pkgs.pcloud}/bin/pcloud";
+      #  })
       (mkGraphicalService {
        name = "protonmail-bridge";
        exec = "${pkgs.protonmail-bridge-gui}/bin/protonmail-bridge-gui --no-window";
