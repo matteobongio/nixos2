@@ -16,6 +16,7 @@
       filezilla
       rustdesk-flutter
       popsicle
+      unrar
 
       pcloud
       pomodoro-gtk

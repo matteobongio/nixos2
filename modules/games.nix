@@ -1,5 +1,5 @@
 {...}: {
-  flake.nixosModules.games = {pkgs, ...} : {
+  flake.nixosModules.games = {pkgs, pkgs-unstable, ...} : {
     environment.systemPackages = with pkgs; [
       mangohud
       protonup-ng
@@ -7,6 +7,7 @@
       limo
       #lutris
       heroic
+      pkgs-unstable.eden
       # melonds
       # gzdoom
       # wine
