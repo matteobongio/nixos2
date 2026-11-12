@@ -22,6 +22,7 @@
       self.nixosModules.gamingConfig
       self.nixosModules.gamingHardware
       self.nixosModules.tudelft
+      self.nixosModules.distrobox
       inputs.nix-index-database.nixosModules.default
       { programs.nix-index-database.comma.enable = true; }
     ];

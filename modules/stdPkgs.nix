@@ -16,7 +16,12 @@
       filezilla
       rustdesk-flutter
       popsicle
+      rar
       unrar
+      zip
+      _7zip-zstd
+      kdePackages.kompare
+      krusader
 
       pcloud
       pomodoro-gtk
@@ -50,7 +55,7 @@
       onlyoffice-desktopeditors
       slack
       deskflow
-      eduvpn-client
+      # eduvpn-client
     ];
   };
 

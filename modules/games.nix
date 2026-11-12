@@ -24,6 +24,7 @@
 
     environment.sessionVariables = {
       "MANGOHUD" = "1";
+      "MANGOHUD_CONFIG" = "no_display";
     };
 
 

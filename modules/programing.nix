@@ -102,4 +102,9 @@
       gopls
     ];
   };
+  flake.nixosModules.distrobox = {pkgs, ...} : {
+    # environment.systemPackages = with pkgs; [ ];
+    virtualisation.virtualbox.host.enable = true;
+    users.extraGroups.vboxusers.members = [ "matteob" ];
+  };
 }
