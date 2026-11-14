@@ -1,24 +1,37 @@
-{inputs, self, ...}: {
-  flake.nixosModules.hyprland = {pkgs, pkgs-unstable, ...}:
-    let
-      # Helper function to generate standardized graphical user services
-      mkGraphicalService = { name, desc ? "", exec, restart ? "on-failure", execPost ? "", path ? [] }: {
-        name = name;
-        value = {
-          description = desc;
-          partOf = [ "graphical-session.target" ];
-          after = [ "graphical-session.target" ];
-          wantedBy = [ "graphical-session.target" ];
-          path = path;
-          serviceConfig = {
-            ExecStart = exec;
-            ExecStartPost = execPost;
-            Restart = restart;
-          };
+{
+  inputs,
+  self,
+  ...
+}: {
+  flake.nixosModules.hyprland = {
+    pkgs,
+    pkgs-unstable,
+    ...
+  }: let
+    # Helper function to generate standardized graphical user services
+    mkGraphicalService = {
+      name,
+      desc ? "",
+      exec,
+      restart ? "on-failure",
+      execPost ? "",
+      path ? [],
+    }: {
+      name = name;
+      value = {
+        description = desc;
+        partOf = ["graphical-session.target"];
+        after = ["graphical-session.target"];
+        wantedBy = ["graphical-session.target"];
+        path = path;
+        serviceConfig = {
+          ExecStart = exec;
+          ExecStartPost = execPost;
+          Restart = restart;
         };
       };
-    in
-  {
+    };
+  in {
     programs.hyprland = {
       enable = true;
       xwayland.enable = true;
@@ -32,7 +45,7 @@
       export HYPRCURSOR_SIZE=24
       export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
       export QT_QPA_PLATFORMTHEME=qt6ct
-      '';
+    '';
 
     environment.systemPackages = with pkgs; [
       hyprpolkitagent
@@ -75,35 +88,34 @@
       seahorse
     ];
 
-
     programs.hyprlock.enable = false; #todo
 
     services.gvfs.enable = true; #enable mtp
     services.udisks2.enable = true; #dolphin
     programs.dconf.enable = true;
-    environment.pathsToLink = [ "/share/color-schemes" ];
+    environment.pathsToLink = ["/share/color-schemes"];
 
     security.polkit.enable = true;
-    systemd.user.targets.graphical-session.wants = [ "hyprpolkitagent.service" ];
+    systemd.user.targets.graphical-session.wants = ["hyprpolkitagent.service"];
 
     # autostart
     systemd.user.services = builtins.listToAttrs [
       (mkGraphicalService {
-       name = "swaync";
-       desc = "Sway Notification Center";
-       exec = "${pkgs.swaynotificationcenter}/bin/swaync";
-       })
+        name = "swaync";
+        desc = "Sway Notification Center";
+        exec = "${pkgs.swaynotificationcenter}/bin/swaync";
+      })
       (mkGraphicalService {
-       name = "waybar";
-       desc = "Waybar Status Bar";
-       path = [ pkgs.pwvucontrol ];
-       exec = "${pkgs.waybar}/bin/waybar";
-       })
+        name = "waybar";
+        desc = "Waybar Status Bar";
+        path = [pkgs.pwvucontrol];
+        exec = "${pkgs.waybar}/bin/waybar";
+      })
       (mkGraphicalService {
-       name = "nm-applet";
-       desc = "Network manager applet";
-       exec = "${pkgs.networkmanagerapplet}/bin/nm-applet";
-       })
+        name = "nm-applet";
+        desc = "Network manager applet";
+        exec = "${pkgs.networkmanagerapplet}/bin/nm-applet";
+      })
       # (mkGraphicalService {
       #  name = "wallpaper";
       #  desc = "Wallpaper";
@@ -115,21 +127,20 @@
       #  exec = "${pkgs.pcloud}/bin/pcloud";
       #  })
       (mkGraphicalService {
-       name = "protonmail-bridge";
-       exec = "${pkgs.protonmail-bridge-gui}/bin/protonmail-bridge-gui --no-window";
-       })
+        name = "protonmail-bridge";
+        exec = "${pkgs.protonmail-bridge-gui}/bin/protonmail-bridge-gui --no-window";
+      })
     ];
 
     services.gnome.gnome-keyring.enable = true;
     security.pam.services.greetd.enableGnomeKeyring = true;
   };
 
-  flake.packages.x86_64-linux.myWofi =
-    let
-      pkgs = import inputs.nixpkgs {
-        system = "x86_64-linux";
-      };
-    in
+  flake.packages.x86_64-linux.myWofi = let
+    pkgs = import inputs.nixpkgs {
+      system = "x86_64-linux";
+    };
+  in
     inputs.wrappers.lib.wrapPackage {
       inherit pkgs;
       package = pkgs.wofi;
@@ -138,6 +149,4 @@
         "--style" = ../config/wofi/style.css;
       };
     };
-
-
 }

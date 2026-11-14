@@ -1,12 +1,11 @@
 {...}: {
-
-  flake.nixosModules.tudelft = {pkgs, ...} : {
-    environment.systemPackages = with pkgs ; [
+  flake.nixosModules.tudelft = {pkgs, ...}: {
+    environment.systemPackages = with pkgs; [
       mattermost-desktop
     ];
   };
 
-  flake.nixosModules.terminal = {pkgs, ...} : {
+  flake.nixosModules.terminal = {pkgs, ...}: {
     programs.fish.enable = true;
     environment.systemPackages = with pkgs; [
       kitty
@@ -54,7 +53,7 @@
       ];
     };
   };
-  flake.nixosModules.docker = {pkgs, ...} : {
+  flake.nixosModules.docker = {pkgs, ...}: {
     virtualisation.containers.enable = true;
     virtualisation.podman = {
       enable = true;
@@ -102,9 +101,9 @@
       gopls
     ];
   };
-  flake.nixosModules.distrobox = {pkgs, ...} : {
+  flake.nixosModules.distrobox = {pkgs, ...}: {
     # environment.systemPackages = with pkgs; [ ];
     virtualisation.virtualbox.host.enable = true;
-    users.extraGroups.vboxusers.members = [ "matteob" ];
+    users.extraGroups.vboxusers.members = ["matteob"];
   };
 }

@@ -1,7 +1,7 @@
 {...}: {
-  flake.nixosModules.general = {pkgs, ...} : {
+  flake.nixosModules.general = {pkgs, ...}: {
     nixpkgs.config.allowUnfree = true;
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.settings.experimental-features = ["nix-command" "flakes"];
     programs.firefox.enable = true;
 
     # Configure network connections interactively with nmcli or nmtui.
@@ -29,7 +29,7 @@
       enable = true;
       user = "matteob";
       dataDir = "/home/matteob/Documents"; # Default folder for new synced folders
-        configDir = "/home/matteob/.config/syncthing"; # Folder for Syncthing's settings and keys
+      configDir = "/home/matteob/.config/syncthing"; # Folder for Syncthing's settings and keys
     };
 
     security.rtkit.enable = true;

@@ -1,10 +1,10 @@
 {...}: {
-  flake.nixosModules.nvidia = {pkgs, ...} : {
+  flake.nixosModules.nvidia = {pkgs, ...}: {
     hardware.graphics = {
       enable = true;
       enable32Bit = true;
-    }; 
-    services.xserver.videoDrivers = [ "nvidia" ];
+    };
+    services.xserver.videoDrivers = ["nvidia"];
     hardware.nvidia.open = true;
 
     environment.systemPackages = with pkgs; [
@@ -20,6 +20,5 @@
     #   __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     #   NVD_BACKEND = "direct";
     # };
-
   };
 }

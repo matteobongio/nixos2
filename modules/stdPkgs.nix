@@ -1,5 +1,9 @@
-{inputs, self, ...}: {
-  flake.nixosModules.stdPkgs = {pkgs, ...} : {
+{
+  inputs,
+  self,
+  ...
+}: {
+  flake.nixosModules.stdPkgs = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
       thunderbird
       joplin-desktop
@@ -59,21 +63,19 @@
     ];
   };
 
+  flake.packages."x86_64-linux".fixedHandbrake = let
+    pkgs = import inputs.nixpkgs {
+      system = "x86_64-linux";
+    };
+  in (pkgs.handbrake.overrideAttrs (old: {
+    nativeBuildInputs =
+      (old.nativeBuildInputs or [])
+      ++ [
+        pkgs.autoAddDriverRunpath
+      ];
+  }));
 
-
-  flake.packages."x86_64-linux".fixedHandbrake =
-    let
-      pkgs = import inputs.nixpkgs {
-        system = "x86_64-linux";
-      };
-    in
-      (pkgs.handbrake.overrideAttrs(old: {
-        nativeBuildInputs = (old.nativeBuildInputs or []) ++ [
-          pkgs.autoAddDriverRunpath
-        ];
-      }));
-
-  flake.nixosModules.dolphin = {pkgs, ...} : {
+  flake.nixosModules.dolphin = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
       kdePackages.dolphin
 
