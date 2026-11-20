@@ -14,6 +14,7 @@
       };
     };
     modules = [
+      inputs.nixos-hardware.nixosModules.framework-intel-core-ultra-series3
       self.nixosModules.frameworkConfig
       self.nixosModules.frameworkHardware
       self.nixosModules.general
@@ -61,7 +62,20 @@
       enable = true;
       extraPackages = with pkgs; [intel-media-driver vpl-gpu-rt];
     };
-    services.fwupd.enable = true;
+
+    services.thermald.enable = true;
+    services.auto-cpufreq.enable = true;
+    services.auto-cpufreq.settings = {
+      battery = {
+        governor = "powersave";
+        turbo = "never";
+      };
+      charger = {
+        governor = "performance";
+        turbo = "auto";
+      };
+    };
+
     system.stateVersion = "26.05"; # DO NOT TOUCH UNDER ANY CIRCUMSTANCES
   };
 

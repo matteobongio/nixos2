@@ -3,7 +3,7 @@
   self,
   ...
 }: {
-  flake.nixosModules.stdPkgs = {pkgs, ...}: {
+  flake.nixosModules.stdPkgs = {pkgs, lib, ...}: {
     environment.systemPackages = with pkgs; [
       thunderbird
       joplin-desktop
@@ -61,6 +61,8 @@
       deskflow
       # eduvpn-client
     ];
+    # everything has an ssd
+    services.fstrim.enable = lib.mkDefault true;
   };
 
   flake.packages."x86_64-linux".fixedHandbrake = let
