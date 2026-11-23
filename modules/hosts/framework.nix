@@ -23,6 +23,7 @@
       self.nixosModules.stdPkgs
       self.nixosModules.dolphin
       self.nixosModules.neovim
+      self.nixosModules.distrobox
       self.nixosModules.games
       self.nixosModules.terminal
       self.nixosModules.docker
@@ -75,6 +76,9 @@
         turbo = "auto";
       };
     };
+
+    hardware.bluetooth.enable = true;
+    services.blueman.enable = true;
 
     system.stateVersion = "26.05"; # DO NOT TOUCH UNDER ANY CIRCUMSTANCES
   };

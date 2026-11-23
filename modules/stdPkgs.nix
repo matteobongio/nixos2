@@ -3,7 +3,11 @@
   self,
   ...
 }: {
-  flake.nixosModules.stdPkgs = {pkgs, lib, ...}: {
+  flake.nixosModules.stdPkgs = {
+    pkgs,
+    lib,
+    ...
+  }: {
     environment.systemPackages = with pkgs; [
       thunderbird
       joplin-desktop

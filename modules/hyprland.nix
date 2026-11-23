@@ -38,6 +38,10 @@
       withUWSM = true;
     };
     programs.regreet.enable = true;
+
+    programs.regreet.settings = {
+      GTK.application_prefer_dark_theme = true;
+    };
     programs.uwsm.enable = true;
 
     environment.etc."xdg/uwsm/env".text = ''
