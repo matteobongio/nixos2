@@ -2,6 +2,7 @@
   flake.nixosModules.tudelft = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
       mattermost-desktop
+      eduvpn-client
     ];
   };
 
