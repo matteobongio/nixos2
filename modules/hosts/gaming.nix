@@ -100,11 +100,30 @@
     # services.printing.enable = true;
 
     services.thermald.enable = true;
+    systemd.services."jellyfin".serviceConfig = {
+      SystemCallFilter = lib.mkForce [
+        "@system-service"
+        "ioctl"
+        "~@privileged"
+      ];
+      DeviceAllow = lib.mkForce [
+        "/dev/dri/renderD128 rw"
+        "/dev/nvidia0 rw"
+        "/dev/nvidiactl rw"
+        "/dev/nvidia-uvm rw"
+        "/dev/nvidia-modeset rw"
+      ];
+    };
 
     services = {
       jellyfin = {
         enable = true;
         openFirewall = true;
+        hardwareAcceleration = {
+          enable = true;
+          type = "nvenc";
+          device = "/dev/dri/renderD128";
+        };
       };
       sonarr = {
         enable = true;
