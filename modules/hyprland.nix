@@ -92,7 +92,7 @@
       seahorse
     ];
 
-    programs.hyprlock.enable = false; #todo
+    # programs.hyprlock.enable = false; #todo
 
     services.gvfs.enable = true; #enable mtp
     services.udisks2.enable = true; #dolphin

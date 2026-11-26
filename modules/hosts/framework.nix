@@ -64,6 +64,8 @@
       extraPackages = with pkgs; [intel-media-driver vpl-gpu-rt];
     };
 
+    programs.hyprlock.enable = true;
+
     services.thermald.enable = true;
     services.auto-cpufreq.enable = true;
     services.auto-cpufreq.settings = {
